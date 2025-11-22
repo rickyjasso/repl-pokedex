@@ -1,7 +1,7 @@
-export function commandHelp(commands) {
+export async function commandHelp(state) {
     console.log("Welcome to the Pokedex!");
     console.log("Usage:\n");
-    for (const key of Object.keys(commands)) {
-        console.log(`${commands[key].name}: ${commands[key].description}`);
+    for (const key of Object.keys(state.commands)) {
+        console.log(`${state.commands[key].name}: ${state.commands[key].description}`);
     }
 }

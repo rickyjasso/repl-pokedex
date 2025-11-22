@@ -1,5 +1,7 @@
 import { startREPL } from "./repl.js";
-function main() {
-    startREPL();
+import { initState } from "./state.js";
+async function main() {
+    const stateObj = initState();
+    await startREPL(stateObj);
 }
 main();
