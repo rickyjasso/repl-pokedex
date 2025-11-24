@@ -18,7 +18,7 @@ export function startREPL(state) {
             return;
         }
         try {
-            await cmd.callback(state);
+            await cmd.callback(state, res[1]);
         }
         catch (error) {
             console.log(error);

@@ -5,14 +5,14 @@ export type State = {
   readline: Interface,
   commands: Record<string, CLICommand>,
   apiObj: PokeAPI,
-  nextLocationsURL: string | null,
-  prevLocationsURL: string | null,
+  nextLocationsURL: string,
+  prevLocationsURL: string,
 };
 
 export type CLICommand = {
   name: string,
   description: string,
-  callback: (state: State) => Promise<void>;
+  callback: (state: State, ...args: string[]) => Promise<void>;
 };
 
 export function initState(): State {
@@ -26,8 +26,8 @@ export function initState(): State {
   return {
     readline: rl,
     commands: commands,
-    apiObj: new PokeAPI(),
-    nextLocationsURL: null,
-    prevLocationsURL: null
+    apiObj: new PokeAPI(500),
+    nextLocationsURL: "",
+    prevLocationsURL: ""
   };
 }

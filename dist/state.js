@@ -11,8 +11,8 @@ export function initState() {
     return {
         readline: rl,
         commands: commands,
-        apiObj: new PokeAPI(),
-        nextLocationsURL: null,
-        prevLocationsURL: null
+        apiObj: new PokeAPI(500),
+        nextLocationsURL: "",
+        prevLocationsURL: ""
     };
 }
