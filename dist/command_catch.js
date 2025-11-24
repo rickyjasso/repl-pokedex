@@ -7,6 +7,8 @@ export async function commandCatch(state, pokemonName) {
     const pokeInfo = await state.apiObj.fetchPokemon(pokemonName);
     if ((Math.random() - (pokeInfo.base_experience * 0.001)) > 0.4) {
         console.log(`${pokemonName} was caught!`);
+        console.log(`You may now inspect it with the 'inspect' command.`);
+        state.pokedex[pokemonName] = pokeInfo;
     }
     else {
         console.log(`${pokemonName} escaped!`);

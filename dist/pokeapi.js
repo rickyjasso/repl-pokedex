@@ -56,11 +56,7 @@ export class PokeAPI {
             if (!response.ok) {
                 throw new Error(`${response.status} ${response.statusText}`);
             }
-            const result = await response.json();
-            const pokemon = {
-                name: result.name,
-                base_experience: result.base_experience
-            };
+            const pokemon = await response.json();
             return pokemon;
         }
         catch (error) {

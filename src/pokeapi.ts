@@ -1,4 +1,5 @@
 import { Cache } from "./pokecache.js";
+import { Pokemon } from "./pokemon_type.js";
 
 export class PokeAPI {
   private static readonly baseURL = "https://pokeapi.co/api/v2";
@@ -66,11 +67,7 @@ export class PokeAPI {
       if (!response.ok) {
         throw new Error(`${response.status} ${response.statusText}`);
       }
-      const result = await response.json();
-      const pokemon: Pokemon = {
-        name: result.name,
-        base_experience: result.base_experience
-      }
+      const pokemon: Pokemon = await response.json();
       return pokemon;
 
     } catch (error) {
@@ -79,10 +76,7 @@ export class PokeAPI {
   };
 }
 
-export type Pokemon = {
-  name: string,
-  base_experience: number
-}
+
 
 export type ShallowLocations = {
   locations: Location[];
