@@ -13,6 +13,7 @@ export function initState() {
         commands: commands,
         apiObj: new PokeAPI(500),
         nextLocationsURL: "",
-        prevLocationsURL: ""
+        prevLocationsURL: "",
+        pokedex: {},
     };
 }

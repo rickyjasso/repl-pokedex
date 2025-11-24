@@ -49,4 +49,23 @@ export class PokeAPI {
             throw new Error(`Error fetching location '${locationName}': ${error.message}`);
         }
     }
+    async fetchPokemon(pokemonName) {
+        const url = `${PokeAPI.baseURL}/pokemon/${pokemonName}`;
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`);
+            }
+            const result = await response.json();
+            const pokemon = {
+                name: result.name,
+                base_experience: result.base_experience
+            };
+            return pokemon;
+        }
+        catch (error) {
+            throw new Error(`Error fetching pokemon '${pokemonName}': ${error.message}`);
+        }
+    }
+    ;
 }

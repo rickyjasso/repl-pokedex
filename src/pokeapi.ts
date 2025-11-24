@@ -56,6 +56,32 @@ export class PokeAPI {
       throw new Error(`Error fetching location '${locationName}': ${(error as Error).message}`);
     }
   }
+
+  async fetchPokemon(pokemonName: string): Promise<Pokemon> {
+    const url = `${PokeAPI.baseURL}/pokemon/${pokemonName}`;
+
+    try {
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(`${response.status} ${response.statusText}`);
+      }
+      const result = await response.json();
+      const pokemon: Pokemon = {
+        name: result.name,
+        base_experience: result.base_experience
+      }
+      return pokemon;
+
+    } catch (error) {
+      throw new Error(`Error fetching pokemon '${pokemonName}': ${(error as Error).message}`);
+    }
+  };
+}
+
+export type Pokemon = {
+  name: string,
+  base_experience: number
 }
 
 export type ShallowLocations = {
